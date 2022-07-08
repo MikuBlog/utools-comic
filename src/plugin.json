@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "pluginName": "每日番剧",
+  "homepage": "https://github.com/MikuBlog",
+  "logo": "logo.png",
+  "author": "xuanzai",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "utools-comic",
+      "explain": "展示每日番剧，释放大脑空间，无需记忆！（番剧来源B站、D站）", 
+      "cmds": [
+        "每日番剧"
+      ]
+    }
+  ]
+}
