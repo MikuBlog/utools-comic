@@ -50,16 +50,12 @@ async function handleOutput(callbackSetList) {
          callbackSetList(allList);
       } else {
          callbackSetList([{
-            title: `该番剧也许不在今日播出呢`,
-            description: '回车搜索',
-            url: `https://www.baidu.com/s?wd=${searchWord}`
+            title: `暂无查询信息`,
          }]);
       }
    } catch (err) {
       callbackSetList([{
-         title: `该番剧也许不在今日播出呢`,
-         description: '回车搜索',
-         url: `https://www.baidu.com/s?wd=${searchWord}`
+         title: `暂无查询信息`,
       }]);
    }
 }
@@ -73,7 +69,15 @@ window.exports = {
          },
          search: async (action, searchWord, callbackSetList) => {
             const filterList = requestResultList.filter(val => searchWord ? val.title.includes(searchWord) : true);
-            callbackSetList(filterList);
+            if (filterList.length) {
+               callbackSetList(filterList);
+            } else {
+               callbackSetList([{
+                  title: `该番剧也许不在今日播出呢`,
+                  description: '回车搜索该番剧',
+                  url: `https://www.baidu.com/s?wd=${searchWord}`
+               }]);
+            }
          },
          // 用户选择列表中某个条目时被调用
          select: (action, itemData) => {
